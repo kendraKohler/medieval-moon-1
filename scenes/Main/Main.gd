@@ -16,4 +16,4 @@ func show_map(map_name):
 
     self.current_map = load(maps[map_name.to_lower()]).instance()
     self.current_map.z_index = -1 
-    self.add_child(self.current_map)
+    self.call_deferred("add_child", self.current_map)

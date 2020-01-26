@@ -92,8 +92,8 @@ func continue_movement():
 		return true
 	return false
 	
-func teleport_to(target, target_direction=null):
-	position = target * tile_size;
+func teleport_to(tele_target, target_direction=null):
+	position = tele_target * tile_size;
 	if (target_direction):
 		direction = target_direction
 		current_movement = movement_vals[direction]
