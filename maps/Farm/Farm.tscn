@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Terrain.png" type="Texture" id=1]
-[ext_resource path="res://scenes/Teleporter/Teleporter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/Teleporter/Teleporter.tscn" type="PackedScene" id=2]
+
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "Terrain.png 0"
