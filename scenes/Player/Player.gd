@@ -91,6 +91,12 @@ func continue_movement():
 		target = position + current_movement["target"] * tile_size
 		return true
 	return false
+	
+func teleport_to(target, target_direction=null):
+	position = target * tile_size;
+	if (target_direction):
+		direction = target_direction
+		current_movement = movement_vals[direction]
 
 func move():
 	if $RayCast2D.is_colliding():
