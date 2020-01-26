@@ -78,5 +78,5 @@ func _process(delta):
 	timer += delta
 	if (timer >= speed):
 		var ticks = int(timer/speed)
-		timer -= ticks
+		timer -= ticks * speed
 		add_minutes(ticks * 10)
