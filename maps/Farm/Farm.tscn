@@ -79,4 +79,4 @@ tile_data = PoolIntArray( 2, 262146, 0, 131072, 196613, 0, 131073, 196615, 0, 19
 [node name="ToHouseTeleporter" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208.135, 15.7595 )
 targetMap = "House"
-targetPosition = Vector2( 6, 8 )
+targetPosition = Vector2( 3, 7 )
