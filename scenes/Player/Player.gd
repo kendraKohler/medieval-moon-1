@@ -54,8 +54,14 @@ func _ready():
 	target = position
 
 func _input(event):
-	if event.is_action_pressed('left_click'):
-		pass
+	if event.is_pressed() && event.is_action('interact'):
+		var val = get_direction_info()
+		$RayCast2D.cast_to = val["cast"]
+		var target = $RayCast2D.get_collider()
+		if (target == null):
+			return
+		if (target.has_method("on_player_interact")):
+			target.on_player_interact()
 
 func _physics_process(delta):
 	if moving:
@@ -70,6 +76,10 @@ func _physics_process(delta):
 	else:
 		get_move_input()
 
+func get_direction_info():
+	for val in movement_vals:
+		if val["direction"] == direction:
+			return val
 
 func get_move_input():
 	for val in movement_vals:
