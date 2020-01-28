@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/GUI/DateAndTimeLabel.gd" type="Script" id=1]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="DateAndTimeLabel" type="Label" parent="MarginContainer"]
+margin_top = 3.0
+margin_right = 159.0
+margin_bottom = 17.0
+text = "this is some sample text"
+script = ExtResource( 1 )

@@ -54,23 +54,32 @@ func _ready():
 	target = position
 
 func _input(event):
-	if event.is_action_pressed('left_click'):
-		pass
+	if event.is_pressed() && event.is_action('interact'):
+		var val = get_direction_info()
+		$RayCast2D.cast_to = val["cast"]
+		var target = $RayCast2D.get_collider()
+		if (target == null):
+			return
+		if (target.has_method("on_player_interact")):
+			target.on_player_interact()
 
 func _physics_process(delta):
 	if moving:
-		if position.distance_to(start_pos) < tile_size:
+		var target_creates_collision = test_move(transform, current_movement["target"]);
+		if position.distance_to(start_pos) < tile_size && not target_creates_collision:
 			move_and_slide(velocity)
-		else:
-			if not continue_movement():
+		elif target_creates_collision || not continue_movement():
 				$AnimatedSprite.stop()
 				$AnimatedSprite.play(current_movement["idle"])
 				position = position.snapped(Vector2(tile_size, tile_size))
 				moving = false
-			
 	else:
 		get_move_input()
 
+func get_direction_info():
+	for val in movement_vals:
+		if val["direction"] == direction:
+			return val
 
 func get_move_input():
 	for val in movement_vals:
@@ -91,12 +100,9 @@ func continue_movement():
 		target = position + current_movement["target"] * tile_size
 		return true
 	return false
-
-func move():
-	if $RayCast2D.is_colliding():
-		return false
-	$MoveTween.interpolate_property(self, "position", position,
-                      position + target * tile_size, 0.8,
-                      Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	$MoveTween.start()
-	return true
+	
+func teleport_to(tele_target, target_direction=null):
+	position = tele_target * tile_size;
+	if (target_direction):
+		direction = target_direction
+		current_movement = movement_vals[direction]
