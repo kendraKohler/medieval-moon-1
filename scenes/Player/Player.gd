@@ -44,7 +44,16 @@ var movement_vals = [
 	"cast": Vector2(0, 32),
 	"direction": DOWN
 },
+{
+	"input": "ui_accept",
+	"animation": "hoe_right",
+	"idle": "idle_right",
+	"target": Vector2(0, 0),
+	"cast": Vector2(32, 0),
+	"direction": RIGHT
+},
 ]
+
 # holds current value from movement_vals
 var current_movement
 
@@ -66,7 +75,7 @@ func _input(event):
 func _physics_process(delta):
 	if moving:
 		var target_creates_collision = test_move(transform, current_movement["target"]);
-		if position.distance_to(start_pos) < tile_size && not target_creates_collision:
+		if position.distance_to(start_pos) < tile_size && not target_creates_collision && target != position:
 			move_and_slide(velocity)
 		elif target_creates_collision || not continue_movement():
 				$AnimatedSprite.stop()
