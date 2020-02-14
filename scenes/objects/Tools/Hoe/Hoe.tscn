@@ -6,26 +6,38 @@
 [sub_resource type="Animation" id=1]
 resource_name = "hoe_right"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 180.0, 190.0 ]
+"values": [ Vector2( -25.344, 20 ), Vector2( -35.344, 0 ), Vector2( -37.344, -2 ), Vector2( -38.344, -5 ), Vector2( -35.344, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 180.0, 200.0, 210.0, 220.0, 230.0 ]
 }
 
 [node name="Hoe" type="Node2D"]
-position = Vector2( 1.06065, -4.24263 )
-rotation = 3.31613
+position = Vector2( 1.061, 0 )
+rotation = 3.14159
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -25.3444, 10.8101 )
-rotation = 3.31613
+position = Vector2( -35.344, -10 )
+rotation = 4.01426
 scale = Vector2( 0.569107, 0.530437 )
 texture = ExtResource( 2 )
 flip_h = true
