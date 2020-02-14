@@ -5,6 +5,7 @@ var maps = {
     "farm": "res://maps/Farm/Farm.tscn",
     "house": "res://maps/House/House.tscn"
 }
+
 const STARTING_MAP = "farm"
 
 func _ready():
