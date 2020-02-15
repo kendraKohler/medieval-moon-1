@@ -12,10 +12,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -25.344, 20 ), Vector2( -35.344, 0 ), Vector2( -37.344, -2 ), Vector2( -38.344, -5 ), Vector2( -35.344, -10 ) ]
+"values": [ Vector2( -25.344, 10 ), Vector2( -30.344, 10 ), Vector2( -35.344, 10 ), Vector2( -30.344, 0 ), Vector2( -30.344, -5 ), Vector2( -25.844, -10 ), Vector2( -25.344, -10 ), Vector2( -22.844, -16.667 ), Vector2( -20.344, -22 ), Vector2( -20.344, -22 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:rotation_degrees")
@@ -24,10 +24,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 180.0, 200.0, 210.0, 220.0, 230.0 ]
+"values": [ 180.0, 200.0, 230.0, 250.0, 260.0, 270.0 ]
 }
 
 [node name="Hoe" type="Node2D"]
@@ -36,11 +36,12 @@ rotation = 3.14159
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -35.344, -10 )
-rotation = 4.01426
-scale = Vector2( 0.569107, 0.530437 )
+position = Vector2( -25.344, 10 )
+rotation = 3.14159
+scale = Vector2( 0.475195, 0.464146 )
 texture = ExtResource( 2 )
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
 anims/hoe_right = SubResource( 1 )

@@ -7,11 +7,7 @@ var direction
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var t = get_transform()
-	#t.origin += Vector3(delta,0,0)
-	#set_transform(t)
 	self.hide()
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,4 +18,8 @@ func animate(direction):
 	match direction:
 		'right':
 			$AnimationPlayer.play('hoe_right')
+			yield($AnimationPlayer, "animation_finished")
+			self.hide()
+			
+	
 	

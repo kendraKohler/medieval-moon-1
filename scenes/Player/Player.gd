@@ -7,6 +7,7 @@ export (int) var tile_size = 32
 
 var direction = DOWN
 var moving = false
+var animated = false
 var target = Vector2()
 var start_pos = Vector2()
 var velocity = Vector2()
@@ -44,9 +45,12 @@ var movement_vals = [
 	"cast": Vector2(0, 32),
 	"direction": DOWN
 },
+]
+
+var animations = [
 {
 	"input": "ui_accept",
-	"animation": "hoe_right",
+	"animation": "hoe",
 	"idle": "idle_right",
 	"target": Vector2(0, 0),
 	"cast": Vector2(32, 0),
@@ -55,6 +59,8 @@ var movement_vals = [
 ]
 # holds current value from movement_vals
 var current_movement
+
+var current_animation
 
 var hoe = load("res://scenes/objects/Tools/Hoe/Hoe.tscn").instance()
 
@@ -75,6 +81,7 @@ func _input(event):
 			target.on_player_interact()
 
 func _physics_process(delta):
+	get_animations()
 	if moving:
 		var target_creates_collision = test_move(transform, current_movement["target"]);
 		if position.distance_to(start_pos) < tile_size && not target_creates_collision && target != position:
@@ -103,10 +110,15 @@ func get_move_input():
 			velocity = speed * val["target"]
 			direction = val["direction"]
 			moving = true
-			if val["animation"] == "hoe_right":
-				hoe.animate('right')
 				
 			return true
+			
+func get_animations():
+	if $AnimatedSprite.animation != 'hoe_right':
+		for val in animations:
+			if Input.is_action_pressed(val["input"]):
+				$AnimatedSprite.play('hoe_right')
+				hoe.animate('right')
 
 func continue_movement():
 	if Input.is_action_pressed(current_movement["input"]):
